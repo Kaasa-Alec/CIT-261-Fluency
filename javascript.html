@@ -9,36 +9,48 @@
     <h1>Topic 1: JavaScript</h1>
     <h3>Loops</h3>
 
-      <p>In the FOR loop example, the button will have the user enter a number for a multiple.  The loop will go through and print the timestables up to the entered number multiplied by 12.</p>
+      <p>In the FOR loop example, the button will have the user enter a number for a 
+      multiple.  The loop will go through and print the timestables up to the entered 
+      number multiplied by 12.</p>
       <button onclick="forLoopDemo()">FOR Loop Demo</button>
       <p id="forLoopDemoSpace"></p>
       
-      <p>In the WHILE loop example, the button will prompt the user to enter a number.  This number will be used to run the WHILE loop until the user's number exceeds 20, after which it will end.</p>
+      <p>In the WHILE loop example, the button will prompt the user to enter a number.  
+      This number will be used to run the WHILE loop until the user's number exceeds 20, 
+      after which it will end.</p>
       <p id="whileLoopDemoSpace"></p>
       <button onclick="whileLoopDemo()">WHILE Loop Demo</button>
 
     <h3>Conditional Statements</h3>
 
-      <p>In this example of IF, ELSE, IF, the user will enter their age.  The IF, ELSE, IF statement will evaluate the user's eligibility to see a PG-13 movie.
+      <p>In this example of IF, ELSE, IF, the user will enter their age.  The IF, ELSE, IF
+       statement will evaluate the user's eligibility to see a PG-13 movie.
       </p>
       <p id="ifElseIfDemoSpace"></p>
       <button onclick="ifElseIfDemo()">IF, ELSE, IF Demo</button>
 
-      <p>In this example of a SWITCH statement, the user will enter their name.  The SWITCH statement will determine if they should be allowed entry to the Batcave, and will do so provided they say the right two names, and have other results for other names.
+      <p>In this example of a SWITCH statement, the user will enter their name.  The 
+      SWITCH statement will determine if they should be allowed entry to the Batcave, and 
+      will do so provided they say the right two names, and have other results for other 
+      names.
       </p>
       <p id="switchDemoSpace"></p>
       <button onclick="switchDemo()">SWITCH Demo</button>
 
     <h3>Variables, Parameters, & Functions</h3>
 
-      <p>This example uses Variables and Parameters in the Function.  Pressing the button will prompt the user for their name, occupation, and spouse's name, then call another function to print a message to the user, using the entered data as parameters.
+      <p>This example uses Variables and Parameters in the Function.  Pressing the button 
+      will prompt the user for their name, occupation, and spouse's name, then call 
+      another function to print a message to the user, using the entered data as 
+      parameters.
       </p>
       <p id="varParFuncDemoSpace"></p>
       <button onclick="varParFuncDemo()">Var/Par/Func Demo</button>
 
     <h3>Arrays</h3>
 
-      <p>This example uses a FOR loop to loop through the array, printing out the names of all my cousins.
+      <p>This example uses a FOR loop to loop through the array, printing out the names 
+      of all my cousins.
       </p>
       <p id="arrayDemoSpace"></p>
       <button onclick="arrayDemo()">Array Demo</button>
@@ -55,7 +67,8 @@
       function whileLoopDemo(){
         var number = prompt("Enter a number.");      
         while (number < 20) {
-          document.getElementById( 'whileLoopDemoSpace' ).innerHTML +=("Your number is " + number + " which is still less than 20!" + "<br>");
+          document.getElementById( 'whileLoopDemoSpace' ).innerHTML +=("Your number is "
+           + number + " which is still less than 20!" + "<br>");
           number++;
         };
       }
@@ -106,7 +119,8 @@
 
       // Function declaration ready to accept parameters
       function introduction(name, job, spouse) {
-        document.getElementById( 'varParFuncDemoSpace' ).innerHTML +=("Hello.  My name is " + name + ".<br><br>I am a " + job + ".<br><br>I am married to " + spouse + ".");
+        document.getElementById( 'varParFuncDemoSpace' ).innerHTML +=("Hello.  My name is "
+         + name + ".<br><br>I am a " + job + ".<br><br>I am married to " + spouse + ".");
       }
 
       // Arrays
