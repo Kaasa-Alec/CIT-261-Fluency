@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Topic 1: JavaScript</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <h1>Topic 1: JavaScript</h1>
+    <h3>Loops</h3>
+
+      <p>In the FOR loop example, the button will have the user enter a number for a multiple.  The loop will go through and print the timestables up to the entered number multiplied by 12.</p>
+      <button onclick="forLoopDemo()">FOR Loop Demo</button>
+      <p id="forLoopDemoSpace"></p>
+      
+      <p>In the WHILE loop example, the button will prompt the user to enter a number.  This number will be used to run the WHILE loop until the user's number exceeds 20, after which it will end.</p>
+      <p id="whileLoopDemoSpace"></p>
+      <button onclick="whileLoopDemo()">WHILE Loop Demo</button>
+
+    <h3>Conditional Statements</h3>
+
+      <p>In this example of IF, ELSE, IF, the user will enter their age.  The IF, ELSE, IF statement will evaluate the user's eligibility to see a PG-13 movie.
+      </p>
+      <p id="ifElseIfDemoSpace"></p>
+      <button onclick="ifElseIfDemo()">IF, ELSE, IF Demo</button>
+
+      <p>In this example of a SWITCH statement, the user will enter their name.  The SWITCH statement will determine if they should be allowed entry to the Batcave, and will do so provided they say the right two names, and have other results for other names.
+      </p>
+      <p id="switchDemoSpace"></p>
+      <button onclick="switchDemo()">SWITCH Demo</button>
+
+    <h3>Variables, Parameters, & Functions</h3>
+
+      <p>This example uses Variables and Parameters in the Function.  Pressing the button will prompt the user for their name, occupation, and spouse's name, then call another function to print a message to the user, using the entered data as parameters.
+      </p>
+      <p id="varParFuncDemoSpace"></p>
+      <button onclick="varParFuncDemo()">Var/Par/Func Demo</button>
+
+    <h3>Arrays</h3>
+
+      <p>This example uses a FOR loop to loop through the array, printing out the names of all my cousins.
+      </p>
+      <p id="arrayDemoSpace"></p>
+      <button onclick="arrayDemo()">Array Demo</button>
+
+    <script>
+    // Loops
+      function forLoopDemo(){
+        var number = prompt("Enter a number.");
+        for (var i = 1; i <= 12; i++) {
+        document.getElementById( 'forLoopDemoSpace' ).innerHTML += (number * i + "<br>");
+        }
+      }
+
+      function whileLoopDemo(){
+        var number = prompt("Enter a number.");      
+        while (number < 20) {
+          document.getElementById( 'whileLoopDemoSpace' ).innerHTML +=("Your number is " + number + " which is still less than 20!" + "<br>");
+          number++;
+        };
+      }
+
+    // Conditional Statements
+      function ifElseIfDemo() {
+        var age = prompt("Please enter your age");
+        if (age >= 13) {
+          document.getElementById( 'ifElseIfDemoSpace' ).innerHTML +=("You may go in to see a PG-13 movie.<br>");
+          } else if (age < 13) {
+            var withParents = confirm("Are your parents with you?")
+            if (withParents) {
+              document.getElementById( 'ifElseIfDemoSpace' ).innerHTML +=("You may go in to see a PG-13 movie with your parents.<br>");
+            } else {
+                document.getElementById( 'ifElseIfDemoSpace' ).innerHTML +=("You are too young to see this movie without an adult! <br><br> Come back when you're older!<br>");
+              }
+            }
+      }
+
+      function switchDemo() {
+        var name = prompt("Who's there?");
+        switch(name) {
+          case "Batman":
+            document.getElementById( 'switchDemoSpace' ).innerHTML +=("Welcome to the Bat Cave, Batman.<br>");
+            break;
+          case "Robin":
+            document.getElementById( 'switchDemoSpace' ).innerHTML +=("Welcome to the Bat Cave, Robin.<br>");
+            break;
+          case "Joker":
+            document.getElementById( 'switchDemoSpace' ).innerHTML +=("Joker? No clowns allowed!<br>");
+            break;
+          default:
+            document.getElementById( 'switchDemoSpace' ).innerHTML +=("Access denied. Releasing hounds in...<br>3...<br>2...<br>1...<br>");
+            break;
+        }
+      }
+
+    // Variables, Parameters, & Functions
+      function varParFuncDemo() {
+        // String variables
+        var name = prompt("What is your name?");
+        var job = prompt("What is your occupation?");
+        var spouse = prompt("What is your spouse's name?");
+
+        // Function call, passing parameters in the parentheses      
+        introduction(name, job, spouse);
+      }
+
+      // Function declaration ready to accept parameters
+      function introduction(name, job, spouse) {
+        document.getElementById( 'varParFuncDemoSpace' ).innerHTML +=("Hello.  My name is " + name + ".<br><br>I am a " + job + ".<br><br>I am married to " + spouse + ".");
+      }
+
+      // Arrays
+      function arrayDemo(){
+        var cousins = ["Jacob", "Kenny", "Josh", "Hailey", "Madison", "Evan", "Brody", "Savannah", "Abigail", "Colton"];
+
+        document.getElementById( 'arrayDemoSpace' ).innerHTML +=("My cousins are: <br><br>");
+
+        for (var i = 0; i < cousins.length; i++) {
+          document.getElementById( 'arrayDemoSpace' ).innerHTML +=(cousins[i] + "<br>");
+        }
+      }
+
+    </script>
+  </body>
+</html>
