@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Topic 3: JSON</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <h1>Topic 3: JSON</h1>
+    <h3>Parse</h3>
+
+      <p>Pressing the button parses a string into an object and uses it to print a message to the screen.</p>
+      <p id="parseDemoSpace"></p>
+      <button onclick="parseDemo()">Parse Demo</button>
+
+    <h3>Stringify</h3>
+
+      <p>Pressing the button stringifies an object into a string and prints it to the screen.</p>
+      <p id="stringifyDemoSpace"></p>
+      <button onclick="stringifyDemo()">Stringify Demo</button>
+
+    <script>
+    // Parse
+      function parseDemo(){
+
+        var professor = '{"name" : "Professor McGonagall", "breed" : "Tabby", "gender" : "female" , "age" : 7 , "licensed" : false}';
+        
+        var parseProf = JSON.parse(professor);
+
+        document.getElementById( 'parseDemoSpace' ).innerHTML =("My cat's name is " + parseProf.name + ".<br><br> She is ");
+        
+        if (parseProf.licensed) {
+          document.getElementById( 'parseDemoSpace' ).innerHTML +=("a licensed ");
+        } else {
+          document.getElementById( 'parseDemoSpace' ).innerHTML +=("an unlicensed ");
+        }
+        
+        document.getElementById( 'parseDemoSpace' ).innerHTML +=(+ parseProf.age + "-year old " + parseProf.breed + " cat.");
+      
+      }
+
+    // Stringify
+      function stringifyDemo(){
+
+        var professor = {
+          name : "Professor McGonagall" , 
+          breed : "Tabby" ,
+          gender : "Female" ,
+          age : 7 ,
+          licensed : false
+        };
+
+        var stringProf = JSON.stringify(professor);
+
+        document.getElementById( 'stringifyDemoSpace' ).innerHTML = (stringProf);
+        
+      }
+
+    </script>
+  </body>
+</html>
