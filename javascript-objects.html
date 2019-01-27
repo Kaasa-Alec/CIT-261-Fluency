@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Topic 2: JavaScript Objects</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <h1>Topic 2: JavaScript Objects</h1>
+    <h3>Objects</h3>
+
+      <p>Clicking the button creates the object creation function for Cat, creates an instance of the Cat object for Professor McGonagall, inherits a numOfLegs property and catInfo method, then prints the contents of the Professor object instance.</p>
+      <p id="objectDemoSpace"></p>
+      <button onclick="objectDemo()">Object Creation Function Demo</button>
+
+    <script>
+    // Object Creation Functions
+      function objectDemo(){
+        
+        var Cat = function (name, age, gender, licensed)
+        {
+          this.name = name;
+          this.age = age;
+          this.gender = gender;
+          this.licensed = true;
+        }
+
+        // Instantiation - Instance of Cat, for my cat, Professor McGonagall.
+        var professor = new Cat("Professor McGonagall", 7, "female", false);
+
+        // Inheritance - This would add the numOfLegs property to every instance of Cat, initiating it as 4.
+        Cat.prototype.numOfLegs = 4;
+
+        // Method - being added through Inheritance with prototype.
+        Cat.prototype.catInfo = function() {
+          switch(this.gender) {
+          case "female":
+            document.getElementById( 'objectDemoSpace' ).innerHTML +=("My cat's name is " + this.name + ".<br><br> She is " + this.age + " years old.<br><br>");
+            
+            if (this.licensed) {
+              document.getElementById( 'objectDemoSpace' ).innerHTML +=("She is licensed.");
+            } else {
+              document.getElementById( 'createObjDemoSpace' ).innerHTML +=("She is not licensed.");
+            }
+            break;
+          case "male":
+            document.getElementById( 'objectDemoSpace' ).innerHTML +=("My cat's name is " + this.name + ".<br><br> She is " + this.age + " years old.<br><br>");
+            
+            if (this.licensed) {
+              document.getElementById( 'objectDemoSpace' ).innerHTML +=("She is licensed.");
+            } else {
+              document.getElementById( 'objectDemoSpace' ).innerHTML +=("She is not licensed.");
+            }
+            break;
+          }
+        }
+        professor.catInfo();
+      }
+
+    </script>
+  </body>
+</html>
