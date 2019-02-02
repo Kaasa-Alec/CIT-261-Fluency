@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Topic 5: Local Storage</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <h1>Topic 5: Local Storage</h1>
+    <h3>API</h3>
+
+      <p></p>
+      <p id="apiDemoSpace"></p>
+      <button onclick="apiDemo()">API Demo</button>
+
+    <h3>Storing & Retrieving Simple Data</h3>
+
+      <p></p>
+      <p id="simDataDemoSpace"></p>
+      <button onclick="simDataDemo()">Storing & Retrieving Simple Data Demo</button>
+
+    <h3>Arrays</h3>
+
+      <p></p>
+      <p id="arrayDemoSpace"></p>
+      <button onclick="arrayDemo()">Arrays</button>
+
+    <h3>Associative Arrays</h3>
+
+      <p></p>
+      <p id="assocArrayDemoSpace"></p>
+      <button onclick="assocArrayDemo()">Associative Arrays</button>
+
+    <h3>Objects</h3>
+
+      <p></p>
+      <p id="objectDemoSpace"></p>
+      <button onclick="objectDemo()">Object</button>
+
+    <script>
+    // API
+      function apiDemo(){
+
+        document.getElementById( 'apiDemoSpace' ).innerHTML = "API's (Application Programming Interface) are ways for a system to request information to make its task easier.  We're using the Web Storage API below.";
+
+      }
+
+    // Storing & Retrieving Simple Data
+      function simDataDemo(){
+
+        localStorage.setItem('name', 'Professor McGonagall');
+
+        document.getElementById( 'simDataDemoSpace' ).innerHTML = "My cat's name is " + localStorage.getItem('name') + ".";
+        
+      }
+
+    // Arrays
+      function arrayDemo(){
+
+        // Clear text in case button pressed twice
+        document.getElementById( 'arrayDemoSpace' ).innerHTML = "";
+
+        // Create Array
+        var nums = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+        // Stringify with JSON and store in localStorage
+        localStorage.setItem("strNums", JSON.stringify(nums));
+
+        // Parse with JSON and assign array to parNums
+        var parNums = JSON.parse(localStorage.getItem("strNums"));
+
+        // For each number in the array
+        for (i = 0; i < parNums.length; i++) {
+
+          // Multiply by 1 to 10
+          for (j = 0; j <= parNums.length; j++) {
+            document.getElementById( 'arrayDemoSpace' ).innerHTML += parNums[i] * j + " "; 
+          }
+
+          document.getElementById( 'arrayDemoSpace' ).innerHTML += "<br>";
+        }
+        
+      }
+
+    // Associative Arrays
+      function assocArrayDemo(){
+        
+        // Create Associative Array of Lunch Numbers for students
+        var lunchNums = { "Alec" : 86505 , "Jacob" : 65693 , "Evan" : 28957 , "Madison" : 38291 };
+
+        // Stringify with JSON and store in localStorage
+        localStorage.setItem("strLunchNums", JSON.stringify(lunchNums));
+
+        // Parse with JSON and assign to parLunchNums
+        var parLunchNums = JSON.parse(localStorage.getItem("strLunchNums"));
+
+        // Clear text in case button pressed twice
+        document.getElementById( 'assocArrayDemoSpace' ).innerHTML = "";
+
+        // Heading
+        document.getElementById( 'assocArrayDemoSpace' ).innerHTML += ("Lunch Numbers<br><br>");
+
+        for (var name in parLunchNums) {
+
+          var num = parLunchNums[name];
+          document.getElementById( 'assocArrayDemoSpace' ).innerHTML += (name + ": " + num + '<br>');
+        }
+
+      }
+
+    // Objects
+      function objectDemo(){
+
+        // Object creation
+        var myCat = {
+          name: "Professor McGonagall",
+          age: 7,
+          breed: "Tabby",
+          gender: "Female",
+          licensed: false
+        }
+
+        // Object storage
+        localStorage.setItem('professor', JSON.stringify(myCat));
+
+        // Parse
+        var parsedCat = JSON.parse(localStorage.getItem('professor'));
+
+        // Object Retrieval
+
+        // Clear text in case button pressed twice
+        document.getElementById( 'objectDemoSpace' ).innerHTML = "";
+
+        document.getElementById( 'objectDemoSpace' ).innerHTML += "My cat's name is " + parsedCat.name + ".<br><br>";
+
+        // Gender?
+        if (parsedCat.gender == "Female") {
+          document.getElementById( 'objectDemoSpace' ).innerHTML += "She is ";
+        } else {
+          document.getElementById( 'objectDemoSpace' ).innerHTML += "He is ";
+        }
+
+        // Licensed?
+        if (parsedCat.licensed) {
+          document.getElementById( 'objectDemoSpace' ).innerHTML += "a licensed ";
+        } else {
+          document.getElementById( 'objectDemoSpace' ).innerHTML += "an unlicensed ";
+        }
+
+        // Age and Breed
+        document.getElementById( 'objectDemoSpace' ).innerHTML += parsedCat.age + "-year old " + parsedCat.breed + " cat.";
+
+      }
+
+    </script>
+  </body>
+</html>

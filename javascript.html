@@ -54,6 +54,13 @@
       </p>
       <p id="arrayDemoSpace"></p>
       <button onclick="arrayDemo()">Array Demo</button>
+      
+    <h3>Associative Arrays</h3>
+
+      <p>This example uses a FOR loop to loop through the associative array, printing out
+      the names of students, coupled with their school lunch ID numbers.</p>
+      <p id="assocArrayDemoSpace"></p>
+      <button onclick="assocArrayDemo()">Associative Arrays</button>
 
     <script>
     // Loops
@@ -132,6 +139,26 @@
         for (var i = 0; i < cousins.length; i++) {
           document.getElementById( 'arrayDemoSpace' ).innerHTML +=(cousins[i] + "<br>");
         }
+      }
+      
+      // Associative Arrays
+      function assocArrayDemo(){
+        
+        // Create Associative Array of Lunch Numbers for students
+        var lunchNums = { "Alec" : 86505 , "Jacob" : 65693 , "Evan" : 28957 , "Madison" : 38291 };
+
+        // Clear text in case button pressed twice
+        document.getElementById( 'assocArrayDemoSpace' ).innerHTML = "";
+
+        // Heading
+        document.getElementById( 'assocArrayDemoSpace' ).innerHTML += ("Lunch Numbers<br><br>");
+
+        for (var name in lunchNums) {
+
+          var num = lunchNums[name];
+          document.getElementById( 'assocArrayDemoSpace' ).innerHTML += (name + ": " + num + '<br>');
+        }
+
       }
 
     </script>
