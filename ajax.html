@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Topic 4: AJAX</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <h1>Topic 4: AJAX</h1>
+    <h3>Requesting a JSON File</h3>
+
+      <p>Pressing the button will create a new XML http request for an outside file, getting the lunchNum.json file, parsing it with JSON, and printing it to the screen with a FOR loop.</p>
+      <p id="requestFileDemoSpace"></p>
+      <button onclick="requestFileDemo()">Requesting a JSON File Demo</button>
+
+    <script>
+    // Requesting a JSON File
+      function requestFileDemo(){
+
+        var req = new XMLHttpRequest();
+        req.open('GET', 'https://raw.githubusercontent.com/Kaasa-Alec/github/master/lunchNum.json');
+        
+        req.onload = function() {
+
+          // Clear space
+          document.getElementById( 'requestFileDemoSpace' ).innerHTML = "";
+          
+          var parLunchNums = JSON.parse(req.responseText)[0]
+
+          for (var name in parLunchNums) {
+
+            var num = parLunchNums[name];
+            document.getElementById( 'requestFileDemoSpace' ).innerHTML += (name + ": " + num + '<br>');
+            
+          }
+        }
+        req.send();
+      }
+    </script>
+  </body>
+</html>
