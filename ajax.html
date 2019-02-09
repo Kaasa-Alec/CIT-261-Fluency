@@ -9,7 +9,7 @@
     <h1>Topic 4: AJAX</h1>
     <h3>Requesting a JSON File</h3>
 
-      <p>Pressing the button will create a new XML http request for an outside file, getting the lunchNum.json file, parsing it with JSON, and printing it to the screen with a FOR loop.</p>
+      <p>Pressing the button will create a new XML http request for an outside file, getting the character file sheet from www.potterapi.com, parsing it with JSON, and printing the first 5 characters' info to the screen with nested FOR loops.</p>
       <p id="requestFileDemoSpace"></p>
       <button onclick="requestFileDemo()">Requesting a JSON File Demo</button>
 
@@ -18,20 +18,25 @@
       function requestFileDemo(){
 
         var req = new XMLHttpRequest();
-        req.open('GET', 'https://raw.githubusercontent.com/Kaasa-Alec/CIT-261-Fluency/master/lunchNum.json');
+        req.open('GET', 'https://www.potterapi.com/v1/characters?&key=$2a$10$/Af8A9nJj9OMOpYeI9mwdu1m6eHSGwcZOhcVHy5v0o76RmTeEaaby');
         
         req.onload = function() {
 
           // Clear space
           document.getElementById( 'requestFileDemoSpace' ).innerHTML = "";
-          
-          var parLunchNums = JSON.parse(req.responseText)[0]
 
-          for (var name in parLunchNums) {
+          for (var i = 0; i < 5; i++) {
 
-            var num = parLunchNums[name];
-            document.getElementById( 'requestFileDemoSpace' ).innerHTML += (name + ": " + num + '<br>');
-            
+            var parHPCharacter = JSON.parse(req.responseText)[i];
+
+            for (var key in parHPCharacter) {
+
+              var info = parHPCharacter[key];
+              document.getElementById( 'requestFileDemoSpace' ).innerHTML += (key + ": " + info + '<br>');
+            }
+
+            document.getElementById( 'requestFileDemoSpace' ).innerHTML += ('<br>');
+
           }
         }
         req.send();
