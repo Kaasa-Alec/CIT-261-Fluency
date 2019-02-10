@@ -1,11 +1,15 @@
 .circle{
+  background-color: white;
   width: 200px;
   height: 200px;
   border-radius: 50% 50% 50% 50%;
   position: relative;
   border: 5px solid black;
-  animation-name: rainbowCycle;
-  animation-duration: 4s;
+}
+
+.animation1 {
+  animation:rainbowCycle;
+  animation-duration: 6s;
   animation-iteration-count: infinite;
 }
 

@@ -7,10 +7,24 @@
   <body id="body">
 
     <h1>Topic 8: CSS Transitions & Animations</h1>
+    <h3>Rainbow Circle</h3>
 
-      <p>I'm using CSS to make a circle that cycles through the colors of the rainbow with a black border around it.</p>
+      <p>Pressing the button will trigger the white circle to begin cycling through the colors of the rainbow.</p>
+      <button onclick="rainbowCircleDemo()">Begin Rainbow Circle Demo</button>
 
-    <div class ="circle"></div>
-    
+    <br><br>
+
+    <div id="div1" class ="circle"></div>
+
+    <script>
+
+      function rainbowCircleDemo(){
+
+        var element = document.getElementById("div1");
+
+        element.classList.add("animation1");
+
+      }
+    </script>
   </body>
 </html>
