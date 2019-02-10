@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Topic 7: Manipulating CSS Class Properties Using JavaScript</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body id="body1">
+
+    <h1>Topic 7: Manipulating CSS Class Properties Using JavaScript</h1>
+    <h3>Change Background Color</h3>
+
+      <p>Pressing this will prompt the user for a color and change the background color to what the user entered.</p>
+      <p id="backgroundColorDemoSpace"></p>
+      <button onclick="backgroundColorDemo()">Change Background Color</button>
+
+    <h3>Change Text Color</h3>
+
+      <p id=colorText>Pressing this will prompt the user for a color and change the color of this text to the user's input.</p>
+      <p id="textColorDemoSpace"></p>
+      <button onclick="textColorDemo()">RemoveChild Demo</button>
+
+    <h3>Change Text Content</h3>
+
+      <p id=greetingText>Please press this button!  I'd love to meet you!</p>
+      <p id="textChangeDemoSpace"></p>
+      <button onclick="textChangeDemo()">Text Change Demo</button>
+
+    <script>
+
+      function backgroundColorDemo(){
+
+        userColor = prompt("Please enter your preferred background color.");
+        document.getElementById("body1").style.backgroundColor = userColor;
+
+      }
+
+      function textColorDemo(){
+
+        textColor = prompt("Please enter your preferred text color.");
+        document.getElementById("colorText").style.color = textColor;
+
+      }
+
+      var i = 0;
+      function textChangeDemo() {
+
+        userName = prompt("What's your name?");
+        document.getElementById("greetingText").innerHTML = "Hello, " + userName + "!  It's nice to meet you.";
+
+      }
+    </script>
+  </body>
+</html>

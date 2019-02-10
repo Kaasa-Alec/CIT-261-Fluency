@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Topic 6: DOM Manipulation</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <h1>Topic 6: DOM Manipulation</h1>
+    <h3>Using CreateElement</h3>
+
+      <p>Pressing the button will create elements and text for a cat div and a dog div, append the text into the div's, and insert the cat one before the dog one.</p>
+      <p id="createElementDemoSpace"></p>
+      <button onclick="createElementDemo()">CreateElement Demo</button>
+
+    <h3>Using RemoveChild</h3>
+
+      <p>Pressing the button will remove the cat div.</p>
+      <p id="removeChildDemoSpace"></p>
+      <button onclick="removeChildDemo()">RemoveChild Demo</button>
+
+      <br>
+      <br>
+
+    <div id="dogDiv">
+
+      <p>Philip is my uncle's new dog.</p>
+
+    </div>
+
+    <script>
+    var catDiv;
+    var dogDiv;
+
+    // Create Element
+      function createElementDemo(){
+
+        // createElement
+        catDiv = document.createElement("catDiv");
+
+        var cat = document.createTextNode("Professor McGonagall is my 7-year old pet tabby cat.");
+
+        dogDiv = document.getElementById("dogDiv");
+
+        // appendChild
+        catDiv.appendChild(cat);
+
+        // insertBefore
+        document.body.insertBefore(catDiv, dogDiv);
+
+      }
+
+    // Remove Child
+      function removeChildDemo(){
+
+        var removeCat = document.body.removeChild(catDiv);
+
+      }
+    </script>
+  </body>
+</html>

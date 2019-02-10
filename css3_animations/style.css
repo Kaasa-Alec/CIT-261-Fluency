@@ -1,0 +1,21 @@
+.circle{
+  width: 200px;
+  height: 200px;
+  border-radius: 50% 50% 50% 50%;
+  position: relative;
+  border: 5px solid black;
+  animation-name: rainbowCycle;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes rainbowCycle {
+  0% {background-color: red; border-radius: 50% 50% 50% 50%;}
+  14.29% {background-color: orange; border-radius: 50% 50% 50% 50%;}
+  28.6% {background-color: yellow; border-radius: 50% 50% 50% 50%;}
+  42.86% {background-color: limegreen; border-radius: 50% 50% 50% 50%;}
+  57.15% {background-color: green; border-radius: 50% 50% 50% 50%;}
+  71.44% {background-color: darkblue; border-radius: 50% 50% 50% 50%;}
+  85.73% {background-color: purple; border-radius: 50% 50% 50% 50%;}
+  100% {background-color: red; border-radius: 50% 50% 50% 50%;}
+}
