@@ -7,7 +7,7 @@
   <body id="body">
 
     <h1>Topic 8: CSS Transitions & Animations</h1>
-    <h3>Rainbow Circle</h3>
+    <h3>Animation: Rainbow Circle</h3>
 
       <p>Pressing the button will trigger the white circle to begin cycling through the colors of the rainbow.</p>
       <button onclick="rainbowCircleDemo()">Begin Rainbow Circle Demo</button>
@@ -16,13 +16,41 @@
 
     <div id="div1" class ="circle"></div>
 
+      <h3>Transition: Hover Over Circle</h3>
+
+      <p>Pressing the button will activate hover functionality, so hovering over the circle will make it bigger.</p>
+      <button onclick="transitionDemo()">Begin Transition Demo</button>
+
     <script>
 
-      function rainbowCircleDemo(){
+      var element = document.getElementById("div1");
 
-        var element = document.getElementById("div1");
+	  // Animation
+      function rainbowCircleDemo() {
 
         element.classList.add("animation1");
+
+      }
+
+	  // Transition
+      function transitionDemo() {
+
+        element.addEventListener("mouseover", mouseOn, false);
+        element.addEventListener("mouseout", mouseOff, false);
+
+      }
+
+      function mouseOn() {
+        
+        element.style.width = '300px';
+        element.style.height = '300px';
+
+      }
+
+      function mouseOff() {
+
+        element.style.width = '200px';
+        element.style.height = '200px';
 
       }
     </script>
