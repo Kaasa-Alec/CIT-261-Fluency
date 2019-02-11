@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Topic 9: Standard JavaScript Events</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body id="body" onload="onLoadDemo()">
+
+    <h1>Topic 9: Standard JavaScript Events</h1>
+    <h3>OnChange Demo</h3>
+
+      <p>When you pick on one of the options of pets below, a description will be printed to the screen.</p>
+
+      <select id="pets" onchange="onChangeDemo()">
+        <option value="default">Select One
+        <option value="prof">Professor McGonagall
+        <option value="zoey">Zoey
+        <option value="phillip">Phillip
+        <option value="zelda">Zelda
+        <option value="lila">Lila
+        <option value="buddy">Buddy
+      </select>
+
+      <p id="onChangeP"></p>
+
+
+    <h3>OnClick Demo</h3>
+
+      <p>I've used the onClick event in every single program to call all my functions up to now. This one will just be a greeting.</p>
+
+      <button onclick="onClickDemo()">OnClick Demo</button>
+
+      <p id="onClickP"></p>
+
+    
+    <h3>OnMouseover/onMouseOut Demo</h3>
+
+      <p>When I mouse over this square, it will get bigger, then return to its original size when I take the mouse off of it.</p>
+
+      <div id="mouseDemoDiv" class="square"></div>
+
+
+    <h3>onKeyDown Demo</h3>
+
+      <p>Click on the text box and start typing!</p>
+
+      <input type="text" onkeydown="onKeyDownDemo()">
+      <p id="onKeyDownDemo"></p>
+
+
+    <h3>OnTouchStart Demo</h3>
+
+      <p>If you tap on this blue circle, it will turn red.  If you tap again, it will turn back to blue. <br><br>
+      Mobile Only!</p>
+
+      <div id="touchDemoDiv" class="circle" ontouchstart="onTouchStartDemo()"></div>
+
+
+    <h3>OnLoad Demo</h3>
+
+      <p id="onload">Once the Skipper gives the command, Kowalski engages the Yule Log.</p>
+
+      <img id="skipper" src="https://raw.githubusercontent.com/Kaasa-Alec/CIT-261-Fluency/master/javaScriptEvents/engage.png">
+
+    <script>
+
+    // OnChange Demo
+      function onChangeDemo() {
+
+        var x = document.getElementById("pets").value;
+
+        switch(x) {
+          case "prof":
+            document.getElementById("onChangeP").innerHTML = "Professor McGonagall is my 7-year old brown Tabby cat.";
+            break;
+          
+          case "zoey":
+            document.getElementById("onChangeP").innerHTML = "Zoey is my aunt Becca's 8-year old Toy Fox Terrier dog.";
+            break;
+          
+          case "phillip":
+            document.getElementById("onChangeP").innerHTML = "Phillip is my uncle Jacob's newly adopted Staffordshire Bull Terrier dog.";
+            break;
+
+          case "zelda":
+            document.getElementById("onChangeP").innerHTML = "Zelda is my uncle Jacob's 4-year old brown tabby cat.";
+            break;
+
+          case "lila":
+            document.getElementById("onChangeP").innerHTML = "Lila is my aunt Becca's 1-year old Balinese cat.";
+            break;
+
+          case "buddy":
+            document.getElementById("onChangeP").innerHTML = "Buddy is my uncle Jacob's orange Tabby cat.";
+            break;
+          default:
+            document.getElementById("onChangeP").innerHTML = "Select a pet!";
+        }
+
+      }
+
+
+    // OnClick Demo
+      function onClickDemo() {
+        document.getElementById("onClickP").innerHTML = "Hello, World!  I'm a string that was printed in a function called by an onClick event!";
+      }
+
+
+    // Mouseover/Off Event Demo
+      document.getElementById("mouseDemoDiv").onmouseover = function() {mouseOver()};
+      
+      document.getElementById("mouseDemoDiv").onmouseout = function() {mouseOut()};
+
+      function mouseOver() {
+        document.getElementById("mouseDemoDiv").style.width = "300px";
+        document.getElementById("mouseDemoDiv").style.height = "300px";
+
+      }
+
+      function mouseOut() {
+        document.getElementById("mouseDemoDiv").style.width = "150px";
+        document.getElementById("mouseDemoDiv").style.height = "150px";
+      }
+
+
+    // OnKeyDown Demo
+      var input = document.querySelector('input');
+
+      function onKeyDownDemo() {
+
+        document.getElementById("onKeyDownDemo").innerHTML += "*Keyboard noises*" + "<br>";
+      }
+
+
+    // OnTouchStart Demo
+      var colorSwap = 0;
+
+      function onTouchStartDemo() {
+
+        var circle = document.getElementById("touchDemoDiv");
+
+        switch(colorSwap){
+          case 0:
+            circle.style.background = "red";
+            i = 1;
+            break;
+          case 1:
+            circle.style.background = "blue";
+            i = 0
+            break;
+        }
+      }
+
+
+    // OnLoad Demo
+      function onLoadDemo() {
+
+        var kowalski = document.createElement("IMG");
+        kowalski.setAttribute("src", "https://raw.githubusercontent.com/Kaasa-Alec/CIT-261-Fluency/master/javaScriptEvents/yuleLog.png");
+        kowalski.setAttribute("width", "500");
+        kowalski.setAttribute("height", "279");
+        document.body.appendChild(kowalski);
+      }
+
+    </script>
+  </body>
+</html>
