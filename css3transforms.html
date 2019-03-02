@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Topic 12: CSS Transforms Without Custom Libraries</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <style>
+    .scale {
+      background-color: red;
+      width: 100px;
+      height: 50px;
+      border-radius: 100px;
+      position: relative;
+      margin: 25px;
+      transition: transform 0.3s;
+    }
+  
+    .scale:hover {
+      transform: scale(1.5);
+    }
+
+    .translate {
+      background: blue;
+      margin-left: 25px;
+      border-radius: 3px;
+      height: 100px;
+      width: 100px;
+      border-radius: 100px;
+      position: relative;
+      transition: transform 0.3s;
+    }
+
+    .translate:hover {
+      transform: translate(50px);
+    }
+
+    .rotate {
+      margin-top: 25px;
+      margin-left: 25px;
+      transition: all 15s;
+      transition-timing: ease-in-out;
+      width: 100px;
+      
+    }
+    .rotate:hover {
+      transform: rotate(2000deg);
+    }
+
+    .skew {
+      margin-left: 125px;
+      transition: transform 1s;
+    }
+
+    .skew:hover {
+      transform:skewX(-30deg);
+    }
+
+  </style>
+  <body id="body">
+
+    <h1>Topic 12: CSS Transforms Without Custom Libraries</h3>
+
+    <h2>Scale Example</h2>
+
+      <p>Hovering over this shape will use scale to multiply its size by 1.5.</p>
+
+      <div class="scale">
+      
+      </div>
+
+
+    <h2>Translate Example</h2>
+
+      <p>Hovering over this circle will use translate to move it slightly to the right.</p>
+
+      <div class="translate"></div>
+
+    <h2>Rotate Example</h2>
+
+      <p>Hovering over the recycling symbol will use rotate to cause it to rotate.</p>
+
+      <div class="rotate">
+        <img src="https://www.trafalgar.co.za/wp-content/uploads/2018/05/Loophole-Closes.jpg" alt="Recycling" height="100" width="100">
+      </div>
+
+
+    <h2>Skew Example</h2>
+
+      <p>Hovering over Michael Jackson will cause him to do the "Anti-Gravity Lean" move.</p>
+
+      <div class="skew">
+        <img src="https://raw.githubusercontent.com/Kaasa-Alec/CIT-261-Fluency/master/mj.png" alt="Smooth Criminal" height="393.5" width="143.5">
+      </div>
+
+    <script>
+    </script>
+  </body>
+</html>
