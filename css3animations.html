@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Topic 13: CSS Animations Without Custom Libraries</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <style>
+
+  /* Roll */
+
+    .ball{
+      display: block;
+      border-radius: 100%;
+      height: 100px;
+      width: 100px;
+      margin: 0;
+      background: radial-gradient(circle at 33px 33px, yellow, darkorange);
+
+      animation-name: roll;
+      animation-duration: 2s;
+      animation-fill-mode: both;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-timing-function: ease-in;
+    }
+
+    @keyframes roll {
+      from {transform: translateX(0) rotate(0deg)}
+      to {transform: translateX(500px) rotate(500deg)}
+      
+    }
+
+  /* Bounce */
+
+    .ball2{
+      display: block;
+      border-radius: 100%;
+      height: 100px;
+      width: 100px;
+      margin-bottom: 50px;
+      top: 0px;
+      left: 0px;
+      position: relative;
+      background: radial-gradient(circle at 33px 33px, lightblue, blue);
+
+      animation: roll 2s both infinite ease-in, bounce 1s infinite ease-in;
+      animation-direction: alternate;
+    }
+
+    @keyframes bounce {
+      0% {top: 40px;}
+      25% {top: 0px;}
+      50% {top: 40px;}
+      75% {top: 0px;}
+      100% {top: 40px;}
+    }
+
+  /* Flip */
+
+    .flip {
+	    perspective: 1000px;
+      width: 250px;
+      height: 350px;
+    }
+
+    .flipBox {
+      position: relative;
+      width: 250px;
+      height: 350px;
+      text-align: center;
+      transition: transform 0.3s;
+      transform-style: preserve-3d;
+      margin-bottom: 25px;
+    }
+
+    .flip:hover .flipBox {
+      transform: rotateY(180deg);
+    }
+
+    .cardBack, .cardFront {
+      position: absolute;
+      width: 250px;
+      height: 350px;
+      backface-visibility: hidden;
+    }
+
+    .cardBack {
+      background-color: transparent;
+      color: black;
+    }
+
+    .cardFront {
+      background-color: transparent;
+      color: white;
+      transform: rotateY(180deg);
+    }
+
+  </style>
+  <body id="body">
+
+    <h1>Topic 13: CSS Animations Without Custom Libraries</h3>
+
+    <h2>Rolling Ball</h2>
+
+      <p>This ball is performing a rolling animation that is infinitely repeating back and forth.</p>
+
+      <div class="ball"></div>
+
+    <h2>Bouncing Ball Example</h2>
+
+      <p>This ball is moving back and forth like the first, but also bouncing.</p>
+
+      <div class="ball2"></div>
+
+    <h2>Flip Example</h2>
+
+      <p>Hovering over the facedown card will cause it to flip to reveal what card it is.</p>
+
+      <div class="flip">
+        <div class="flipBox">
+          <div class="cardBack">
+            <img src="https://pngimage.net/wp-content/uploads/2018/06/playing-card-back-png-1.png" alt="Card Back" style="width:250px;height:350px">
+          </div>
+          <div class="cardFront">
+          	<img src="https://opengameart.org/sites/default/files/king_of_hearts2.png" alt="Card Front" style="width:250px;height:350px">
+          </div>
+        </div>
+      </div>
+
+    <script>
+    </script>
+  </body>
+</html>
