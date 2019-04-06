@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Clock</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <style>
+
+    @import url(https://fonts.googleapis.com/css?family=Dosis);
+
+    body {
+      background: black;
+    }
+
+    .clock {
+      height: 300px;
+      width: 300px;
+      background: #0C1550;
+      border-radius: 50%;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      margin-top: 150px;
+      margin-left: -150px;
+
+      box-shadow: inset 0px 0px 50px 10px #84FDF5,
+      inset 0px 0px 20px 40px #0D26C1,
+      inset 0 0 5px 5px #84FDF5,
+      inset 0 0 5px 5px #84FDF5,
+      inset 0 0 5px 5px #84FDF5,
+      inset 0 0 5px 5px #84FDF5,
+      0 0 40px #84FDF5,
+      0 0 40px #84FDF5,
+      0 0 5px #84FDF5;
+    }
+
+    .hourMinDot {
+      position: relative;
+      background: #EEF1FE;
+      border-radius: 50%;
+      width: 7.7%;
+      height: 7.7%;
+      top: 46.15%;
+      left: 46.15%;
+      z-index: 10;
+      box-shadow: 
+    0 0 10px #84FDF5, 0 0 10px #84FDF5, 0 0 10px #84FDF5;
+    }
+
+    .hole {
+      position: relative;
+      background: #0C1550;
+      border-radius: 50%;
+      width: 57%;
+      height: 57%;
+      top: 21.4%;
+      left: 21.4%;
+      z-index: 10;
+    }
+
+    .secDot {
+      position: relative;
+      background: #D00B15;
+      border-radius: 50%;
+      width: 56%;
+      height: 56%;
+      top: 22%;
+      left: 22%;
+      z-index: 9;
+      box-shadow: 
+    0 0 10px #D00B15, 0 0 10px #D00B15, 0 0 10px #D00B15;
+    }
+
+    .second {
+      width: 2px;
+      height: 125px;
+      position: absolute;
+      z-index: 11;
+      background: #D00B15;
+      bottom: 50%;
+      left: 50%;
+      top: -74px;
+      margin-left: 0;
+      border-top-right-radius: 50%;
+      border-top-left-radius: 50%;
+      transform-origin: 50% 78px;
+      box-shadow: 
+    0 0 10px #D00B15, 0 0 10px #D00B15, 0 0 10px #D00B15;
+    }
+
+    .minute {
+      width: 5px;
+      height: 105px;
+      position: absolute;
+      z-index: 1;
+      background-color: #EEF1FE;
+      bottom: 50%;
+      left: 50%;
+      margin-left: -4px;
+      top: 45px;
+      margin-bottom: 7.5px;
+      border-top-right-radius: 50%;
+      border-top-left-radius: 50%;
+      transform-origin: 50% 105px;
+      box-shadow: 
+    0 0 10px #84FDF5, 0 0 10px #84FDF5, 0 0 10px #84FDF5; 
+    }
+
+    .hour {
+      width: 5px;
+      height: 75px;
+      position: absolute;
+      z-index: 1;
+      background: #EEF1FE;
+      bottom: 50%;
+      left: 50%;
+      top: 70px;
+      margin-left:0;
+      margin-bottom: 7.5px;
+      border-top-right-radius: 50%;
+      border-top-left-radius: 50%;
+      transform-origin: 50% 80px;
+      box-shadow: 
+    0 0 15px #84FDF5, 0 0 15px #84FDF5, 0 0 15px #84FDF5;
+    }
+
+    span {
+      display: inline-block;
+      position: absolute;
+      color: #EEF1FE;
+      font-size: 22px;
+      font-family: 'Dosis', sans-serif;
+      font-weight: 900;
+      z-index: 4;
+      text-shadow: 
+    0 0 15px #84FDF5, 0 0 15px #84FDF5, 0 0 15px #84FDF5;
+    }
+
+    .one {
+      bottom: 215px;
+      right: 100px;
+    }
+
+    .two {
+      bottom: 185px;
+      right: 65px;
+    }
+
+    .three {
+      top: 135px;
+      right: 50px;
+    }
+
+    .four {
+      top: 185px;
+      right: 65px;
+    }
+
+    .five {
+      top: 220px;
+      right: 95px;
+    }
+
+    .six {
+      bottom: 45px;
+      left: 50%;
+      margin-left: -5px;
+    }
+
+    .seven {
+      top: 220px;
+      left: 95px;
+    }
+
+    .eight {
+      top: 185px;
+      left: 62px;
+    }
+
+    .nine {
+      left: 50px;
+      top: 135px;
+    }
+
+    .ten {
+      left: 65px;
+      bottom: 185px;
+    }
+
+    .eleven {
+      bottom: 215px;
+      left: 100px;
+    }
+
+    .twelve {
+      top: 45px;
+      left: 50%;
+      margin-left: -9px;
+    }
+
+    .lines {
+      width: 2px;
+      height: 15px;
+      left: 50%;
+      top: 0;
+      margin-left: -1px;
+      border-radius: 25px;
+      position: absolute;
+      z-index: 2;
+      background: #EEF1FE;
+      transform-origin: 50% 150px;
+      box-shadow: 
+    0 0 15px #84FDF5, 0 0 15px #84FDF5, 0 0 15px #84FDF5;
+    }
+
+    .lines:nth-of-type(5n) {
+      position: absolute;
+      width: 4px;
+      height: 25px;
+      margin-left: -2px;
+      transform: origin: 50% 150px;
+    }
+
+    #digital {
+      display: inline-block;
+      position: absolute;
+      color: #EEF1FE;
+      font-size: 16px;
+      text-shadow: 
+    0 0 15px #84FDF5, 0 0 15px #84FDF5, 0 0 15px #84FDF5; 
+      font-family: 'Dosis', sans-serif;
+      top: 185px;
+      left: 38%;
+    }
+
+  </style>
+
+  <body id="body">
+    <div id="display">
+      <div class="clock">
+        <div class="hour"></div>
+        <div class="minute"></div>
+
+        <div class="hourMinDot">
+          <div class="hole">
+            <div class="secDot">
+              <div class="second"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="digital"></div>
+        <div class="lines"></div>
+
+        <span class="one">1</span>
+        <span class="two">2</span>
+        <span class="three">3</span>
+        <span class="four">4</span>
+        <span class="five">5</span>
+        <span class="six">6</span>
+        <span class="seven">7</span>
+        <span class="eight">8</span>
+        <span class="nine">9</span>
+        <span class="ten">10</span>
+        <span class="eleven">11</span>
+        <span class="twelve">12</span>
+      </div>
+  </body>
+
+  <script>
+    
+    // Print minute/hour lines
+    function timeLines() {
+      
+      var lines = document.getElementsByClassName('lines');
+      var clockEdge = document.getElementsByClassName('clock')[0];
+
+      for (var i = 1; i < 60; i++) {
+        clockEdge.innerHTML += "<div class='lines'></div>";
+        lines[i].style.transform = "rotate(" + 6 * i + "deg)";
+      }
+
+    }
+
+    function clock(){
+    // Analog Clock
+
+      // Time element grabbers
+      var date = new Date();
+      var hour = date.getHours();
+      var minute = date.getMinutes();
+      var second = date.getSeconds();
+      var session = "AM";
+
+      // Hand angles
+      var hourAngle = hour * 30 + minute * (360/720);
+      var minuteAngle = minute * 6 + second * (360/3600);
+      var secondAngle = second * 6;
+
+      // Hand grabbers
+      var hourHand = document.querySelector('.hour');
+      var minuteHand = document.querySelector('.minute');
+      var secondHand = document.querySelector('.second');
+
+      // Angle rotation
+      hourHand.style.transform = "rotate(" + hourAngle + "deg)";
+      minuteHand.style.transform = "rotate(" + minuteAngle + "deg)";
+      secondHand.style.transform = "rotate(" + secondAngle + "deg)";
+
+
+    // Digital Clock
+
+      // Session Setter
+      if (hour == 0) {
+        hour = 12;
+        } else if (hour > 12) {
+          hour -= 12;
+          session = "PM";
+      }
+
+      // Set a 0 first when an hour/minute/second is in single digits
+      if (hour < 10) {
+        hour = "0" + hour;
+      }
+
+      if (minute < 10) {
+        minute = "0" + minute;
+      }
+
+      if (second < 10) {
+        second = "0" + second;
+      }
+
+      // Assemble and Display Digital Time
+      var time = hour + ":" + minute + ":" + second + " " + session;
+      document.getElementById("digital").innerText = time;
+      document.getElementById("digital").textContent = time;
+
+    }
+
+    timeLines();
+    setInterval(clock, 1000);
+
+  </script>
+</html>
