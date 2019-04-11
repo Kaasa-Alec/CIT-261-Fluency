@@ -82,7 +82,7 @@
           case "eastern":
 
             var timeZone = new TimeZoneDB;
-            var offset = 9;
+            var offset = 10;
 
             timeZone.getJSON({
               key: "FQASQV7RU9MQ",
@@ -225,30 +225,26 @@
       // Hours part from the timestamp
       var hour = time.getHours() + offset;
 
-      var session = 'AM';
-
-      if (hour < 12) {
-        session = 'AM';
-      } else if (hour >= 12 && hour < 24) {
-        session = 'PM';
-        hour -= 12;
-      } else if (hour >= 24) {
-        session = 'AM';
-        hour = 12;
+      if (hour >= 24) {
+        hour -= 24;
       }
+
+      var x = ((hour + 11) % 12) + 1;
+
+      var session = hour > 11 ? "PM" : "AM";
 
       var minute = "0" + time.getMinutes();
       var second = "0" + time.getSeconds();
 
       // Display Digital Time
-        var digitalTime = hour + ':' + minute.substr(-2) + ':' + second.substr(-2) + " " + session;
+        var digitalTime = x + ':' + minute.substr(-2) + ':' + second.substr(-2) + " " + session;
 
         document.getElementById("digital").innerText = digitalTime;
         document.getElementById("digital").textContent = digitalTime;
 
       // Display Analog Time
         // Hand angles
-        var hourAngle = hour * 30 + minute * (360/720);
+        var hourAngle = x * 30 + minute * (360/720);
         var minuteAngle = minute * 6 + second * (360/3600);
         var secondAngle = second * 6;
 
