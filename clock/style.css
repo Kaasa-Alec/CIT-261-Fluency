@@ -1,0 +1,266 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis);
+
+    body {
+      background: black;
+    }
+
+    select {
+      background: #0C1550;
+      color: #EEF1FE;
+      font-size: 22px;
+      width: 200px;
+      font-family: 'Dosis', sans-serif;
+      font-weight: 900;
+      z-index: 4;
+      text-shadow: 
+        0 0 15px #84FDF5, 0 0 15px #84FDF5;
+      box-shadow: inset 0px 0px 10px 2px #84FDF5,
+        inset 0px 0px 10px 2px #0D26C1,
+        0 0 40px #84FDF5,
+        0 0 40px #84FDF5,
+        0 0 5px #84FDF5;
+      position: relative;
+
+      top: 50%;
+      left: 50%;
+      margin-top: 50px;
+      margin-left: -100px;
+      margin-bottom: 100px;
+
+      transition: all 0.3s;
+
+    }
+
+    select:hover {
+      transition: all 0.3s;
+      background-color: #52120F;
+      color: #FEF5EE;
+      text-shadow: 
+        0 0 15px #fd9998, 0 0 15px #fd9998;
+      box-shadow: inset 0px 0px 10px 2px #fd9998,
+        inset 0px 0px 10px 2px #C1610D,
+        0 0 40px #fd9998,
+        0 0 40px #fd9998,
+        0 0 5px #fd9998;
+    }
+
+    .clock {
+      height: 300px;
+      width: 300px;
+      background: #0C1550;
+      border-radius: 50%;
+      position: relative;
+      top: 50%;
+      left: 50%;
+      margin-top: 150px;
+      margin-left: -150px;
+
+      box-shadow: inset 0px 0px 50px 10px #84FDF5,
+      inset 0px 0px 20px 40px #0D26C1,
+      inset 0 0 5px 5px #84FDF5,
+      inset 0 0 5px 5px #84FDF5,
+      inset 0 0 5px 5px #84FDF5,
+      inset 0 0 5px 5px #84FDF5,
+      0 0 40px #84FDF5,
+      0 0 40px #84FDF5,
+      0 0 5px #84FDF5;
+    }
+
+    .hourMinDot {
+      position: relative;
+      background: #EEF1FE;
+      border-radius: 50%;
+      width: 7.7%;
+      height: 7.7%;
+      top: 46.15%;
+      left: 46.15%;
+      z-index: 10;
+      box-shadow: 
+        0 0 10px #84FDF5, 0 0 10px #84FDF5, 0 0 10px #84FDF5;
+    }
+
+    .hole {
+      position: relative;
+      background: #0C1550;
+      border-radius: 50%;
+      width: 57%;
+      height: 57%;
+      top: 21.4%;
+      left: 21.4%;
+      z-index: 10;
+    }
+
+    .secDot {
+      position: relative;
+      background: #D00B15;
+      border-radius: 50%;
+      width: 56%;
+      height: 56%;
+      top: 22%;
+      left: 22%;
+      z-index: 9;
+      box-shadow: 
+        0 0 10px #D00B15, 0 0 10px #D00B15, 0 0 10px #D00B15;
+    }
+
+    .second {
+      width: 2px;
+      height: 125px;
+      position: absolute;
+      z-index: 11;
+      background: #D00B15;
+      bottom: 50%;
+      left: 50%;
+      top: -74px;
+      margin-left: 0;
+      border-top-right-radius: 50%;
+      border-top-left-radius: 50%;
+      transform-origin: 50% 78px;
+      box-shadow: 
+        0 0 10px #D00B15, 0 0 10px #D00B15, 0 0 10px #D00B15;
+    }
+
+    .minute {
+      width: 5px;
+      height: 105px;
+      position: absolute;
+      z-index: 1;
+      background-color: #EEF1FE;
+      bottom: 50%;
+      left: 50%;
+      margin-left: -4px;
+      top: 45px;
+      margin-bottom: 7.5px;
+      border-top-right-radius: 50%;
+      border-top-left-radius: 50%;
+      transform-origin: 50% 105px;
+      box-shadow: 
+        0 0 10px #84FDF5, 0 0 10px #84FDF5, 0 0 10px #84FDF5; 
+    }
+
+    .hour {
+      width: 5px;
+      height: 75px;
+      position: absolute;
+      z-index: 1;
+      background: #EEF1FE;
+      bottom: 50%;
+      left: 50%;
+      top: 70px;
+      margin-left:0;
+      margin-bottom: 7.5px;
+      border-top-right-radius: 50%;
+      border-top-left-radius: 50%;
+      transform-origin: 50% 80px;
+      box-shadow: 
+        0 0 15px #84FDF5, 0 0 15px #84FDF5, 0 0 15px #84FDF5;
+    }
+
+    span {
+      display: inline-block;
+      position: absolute;
+      color: #EEF1FE;
+      font-size: 22px;
+      font-family: 'Dosis', sans-serif;
+      font-weight: 900;
+      z-index: 4;
+      text-shadow: 
+        0 0 15px #84FDF5, 0 0 15px #84FDF5, 0 0 15px #84FDF5;
+    }
+
+    .one {
+      bottom: 215px;
+      right: 100px;
+    }
+
+    .two {
+      bottom: 185px;
+      right: 65px;
+    }
+
+    .three {
+      top: 135px;
+      right: 50px;
+    }
+
+    .four {
+      top: 185px;
+      right: 65px;
+    }
+
+    .five {
+      top: 220px;
+      right: 95px;
+    }
+
+    .six {
+      bottom: 45px;
+      left: 50%;
+      margin-left: -5px;
+    }
+
+    .seven {
+      top: 220px;
+      left: 95px;
+    }
+
+    .eight {
+      top: 185px;
+      left: 62px;
+    }
+
+    .nine {
+      left: 50px;
+      top: 135px;
+    }
+
+    .ten {
+      left: 65px;
+      bottom: 185px;
+    }
+
+    .eleven {
+      bottom: 215px;
+      left: 100px;
+    }
+
+    .twelve {
+      top: 45px;
+      left: 50%;
+      margin-left: -9px;
+    }
+
+    .lines {
+      width: 2px;
+      height: 15px;
+      left: 50%;
+      top: 0;
+      margin-left: -1px;
+      border-radius: 25px;
+      position: absolute;
+      z-index: 2;
+      background: #EEF1FE;
+      transform-origin: 50% 150px;
+      box-shadow: 
+        0 0 15px #84FDF5, 0 0 15px #84FDF5, 0 0 15px #84FDF5;
+    }
+
+    .lines:nth-of-type(5n) {
+      position: absolute;
+      width: 4px;
+      height: 25px;
+      margin-left: -2px;
+      transform: origin: 50% 150px;
+    }
+
+    #digital {
+      display: inline-block;
+      position: absolute;
+      color: #EEF1FE;
+      font-size: 16px;
+      text-shadow: 
+        0 0 15px #84FDF5, 0 0 15px #84FDF5, 0 0 15px #84FDF5; 
+      font-family: 'Dosis', sans-serif;
+      top: 185px;
+      left: 38%;
+    }
