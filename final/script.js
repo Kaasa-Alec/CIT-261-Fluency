@@ -55,11 +55,6 @@
             hour -= 12;
         }
 
-        // Set a 0 first when an hour/minute/second is in single digits
-        if (hour < 10) {
-          hour = "0" + hour;
-        }
-
         if (minute < 10) {
           minute = "0" + minute;
         }
@@ -258,6 +253,50 @@
         minuteHand.style.transform = "rotate(" + minuteAngle + "deg)";
         secondHand.style.transform = "rotate(" + secondAngle + "deg)";
 
+    }
+
+    // Pull the data from the TimeZone database. Function is the same one from the link before.
+    function TimeZoneDB() {
+      this.getJSON=function(e,t) {
+        try {
+          var n = e.key,
+          o = e.zone,
+          a = e.lat,
+          i = e.lng,
+          c = e.time,
+          r = "_" + (new Date).getTime() + Math.floor(1e4 * Math.random()),
+          d = document.createElement("script");
+          window[r] = function(e) {
+            
+            t&&t(e);
+
+            try {
+              delete window[r]
+            } catch(n) {
+              window[r]=void 0
+              }
+          },
+          
+          o?d.src = "//api.timezonedb.com/?key=" 
+          + n 
+          + "&zone=" 
+          + o 
+          + (c?"&time=" + c:"") 
+          + "&format=json&callback=" 
+          + r:a&&i&&(d.src="//api.timezonedb.com/?key=" 
+          + n 
+          + (c?"&time="+c:"") 
+          + "&lat="
+          + a 
+          + "&lng="
+          + i 
+          + "&format=json&callback="
+          +r),document.body.appendChild(d),d.parentNode.removeChild(d)
+            
+        } catch(m) {
+          return alert("JSON request failed."),!1
+        }
+      }
     }
 
     timeLines();
