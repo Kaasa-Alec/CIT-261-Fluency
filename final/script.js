@@ -1,4 +1,6 @@
-// Timezone for clock IF statement.  If empty, displays time as normal.  If not, displays time in time zone.
+/*Timezone for clock IF statement.  
+  If empty, displays time as normal.  
+  If not, displays time in time zone. */
 var zone = "";
     
 // Print minute/hour lines
@@ -11,104 +13,57 @@ function timeLines() {
     clockEdge.innerHTML += "<div class='lines'></div>";
     lines[i].style.transform = "rotate(" + 6 * i + "deg)";
   }
-
 }
 
-// Analog Clock
+// Run the current time zone's clock
 function clock(){
 
   // Local time.  Changes for timezone if not empty.
   if (zone == "") {
 
     // Time element grabbers
-    var date = new Date(),
-    h = date.getHours(),
-    m = date.getMinutes(),
-    s = date.getSeconds(),
-    session = "AM";
-
-    // Hand angles
-    var hAngle = h * 30 + m * (360/720),
-    mAngle = m * 6 + s * (360/3600),
-    sAngle = s * 6;
-
-    // Hand grabbers
-    var hHand = document.querySelector('.hour'),
-    mHand = document.querySelector('.minute'),
-    sHand = document.querySelector('.second');
-
-    // Angle rotation
-    hHand.style.transform = "rotate(" + hAngle + "deg)";
-    mHand.style.transform = "rotate(" + mAngle + "deg)";
-    sHand.style.transform = "rotate(" + sAngle + "deg)";
-
-    // Digital Clock
-    // Session Setter
-    if (h >= 12) {
-      session = "PM";
-    }
-
-    // Standard Time Setter (instead of Military Time)
-    if (h == 0) {
-      h = 12;
-      } else if (h > 12) {
-        h -= 12;
-    }
-
-    // If minute/second is single digits, precede with 0
-    if (m < 10) {
-      m = "0" + m;
-    }
-
-    if (s < 10) {
-      s = "0" + s;
-    }
-
-    // Assemble and Display Digital Time
-    var time = h + ":" + m + ":" + s + " " + session;
-    document.getElementById("digital").innerText = time;
-    document.getElementById("digital").textContent = time;
+    var t = new Date(),
+    h = t.getHours(),
+    m = t.getMinutes(),
+    s = t.getSeconds();
+    
+    displayTime(h, m, s);
 
   } else {
 
     switch(zone) {
       case "local":
-
         break;
       case "eastern":
         var timeZone = "America/New_York";
         getTimeZone(timeZone);
         break;
-
       case "central":
         var timeZone = "America/Chicago";
         getTimeZone(timeZone);
         break;
-
       case "mt":
         var timeZone = "America/Denver";
         getTimeZone(timeZone);
         break;
-
       case "pdt":
         var timeZone = "America/Los_Angeles";
         getTimeZone(timeZone);
         break;
-            
       case "adt":
         var timeZone = "America/Anchorage";
         getTimeZone(timeZone);
         break;
-
       case "hast":
         var timeZone = "Pacific/Honolulu";
         getTimeZone(timeZone);
         break;
-
     }
   }
 }
 
+/*When you tap the button to change the time zone, sets the
+zone variable so the clock() IF statement triggers.*/
 function changeTimeZone(timeZone) {
 
   var timeZone = document.getElementById("timeZones").value;
@@ -118,7 +73,7 @@ function changeTimeZone(timeZone) {
       zone = "";
       break;
     case "eastern":
-      zone = "eastern";  
+      zone = "eastern";
       break;
     case "central":
       zone = "central";  
@@ -141,66 +96,57 @@ function changeTimeZone(timeZone) {
   }
 }
 
-// New Clock for a different time zone
-function newClock(timestamp, offset) {
-
-  // Format time
-  var time = new Date(timestamp*1000);
-  // Hours part from the timestamp
-  var h = time.getHours() + offset;
-
-  if (h >= 24) {
-    h -= 24;
-  }
-
-  var hFixed = ((h + 11) % 12) + 1,
-  session = h > 11 ? "PM" : "AM",
-  m = "0" + time.getMinutes(),
-  s = "0" + time.getSeconds();
-
-  // Display Digital Time
-  var digitalTime = hFixed + ':' + m.substr(-2) + ':' + s.substr(-2) + " " + session;
-
-  document.getElementById("digital").innerText = digitalTime;
-  document.getElementById("digital").textContent = digitalTime;
-
-  // Display Analog Time
-  // Hand angles
-  var hAngle = hFixed * 30 + m * (360/720);
-  var mAngle = m * 6 + s * (360/3600);
-  var sAngle = s * 6;
-
-  // Hand grabbers
-  var hHand = document.querySelector('.hour');
-  var mHand = document.querySelector('.minute');
-  var sHand = document.querySelector('.second');
-
-  // Angle rotation
-  hHand.style.transform = "rotate(" + hAngle + "deg)";
-  mHand.style.transform = "rotate(" + mAngle + "deg)";
-  sHand.style.transform = "rotate(" + sAngle + "deg)";
-
-}
-
-// Retrieves timestamp and calls New Clock with it
+// Retrieve timestamp and call a new clock
 function getTimeZone(zone) {
-
-  var offset = 7;
 
   var req = new XMLHttpRequest();
 
   req.open('GET', 'https://api.timezonedb.com/v2.1/get-time-zone?key=FQASQV7RU9MQ&format=json&by=zone&zone=' + zone, true);
             
   req.onload = function () {
-
-    var data = JSON.parse(req.responseText)
-
-    var time = data.timestamp;
-
-    newClock(time, offset);
-              
+    var data = JSON.parse(req.responseText),
+    time = data.timestamp;
+    newClock(time);
   };
   req.send(null);
+}
+
+// New Clock for a different time zone
+function newClock(timestamp) {
+
+  var t = new Date(timestamp*1000);   // Grab time from timestamp
+  var h = t.getHours() + 7,      // Grab Hours
+  m = t.getMinutes(),                 // Grab Minutes
+  s = t.getSeconds();                 // Grab Seconds
+
+  displayTime(h, m, s);
+}
+
+// Display analog and digital time
+function displayTime(h, m, s) {
+  // Analog
+  var hAngle = h * 30 + m * (360/720), // Hour hand angle
+  mAngle = m * 6 + s * (360/3600),     // Minute hand angle
+  sAngle = s * 6;                      // Second hand angle
+
+  var hHand = document.querySelector('.hour'),  // Hour hand grabber
+  mHand = document.querySelector('.minute'),    // Minute hand grabber
+  sHand = document.querySelector('.second');    // Second hand grabber
+
+  // Angle rotation
+  hHand.style.transform = "rotate(" + hAngle + "deg)";
+  mHand.style.transform = "rotate(" + mAngle + "deg)";
+  sHand.style.transform = "rotate(" + sAngle + "deg)";
+
+  // Digital
+  if (h >= 24) { h -= 24; }
+  var hFixed = ((h + 11) % 12) + 1; 
+  var session = h > 11 ? "PM" : "AM";
+  if (m < 10) { m = "0" + m; }
+  if (s < 10) { s = "0" + s; }
+  var digitalTime = hFixed + ':' + m + ':' + s + " " + session;
+  document.getElementById("digital").innerText = digitalTime;
+  document.getElementById("digital").textContent = digitalTime;
 }
 
 timeLines();
